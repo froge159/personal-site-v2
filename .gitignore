@@ -1,0 +1,26 @@
+
+/node_modules
+
+
+
+/.next/
+
+# production
+/build
+
+
+
+
+.env*
+
+.vercel
+
+next-env.d.ts
+
+
+/api/testing.py
+
+.venv/
+
+__pycache__/
+node_modules
