@@ -29,10 +29,15 @@
   }
 }
 
-body {
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
   background: linear-gradient(130deg, #000000 60%, #535353 100%);
-  background-attachment: fixed;
 }
+
 
 
 

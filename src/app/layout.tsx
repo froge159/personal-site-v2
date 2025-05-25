@@ -10,9 +10,9 @@ const queryClient = new QueryClient();
 export default function RootLayout({children}: {children: React.ReactNode;}) {
 	return (
 	<QueryClientProvider client={queryClient}>
-		<html lang="en">
+		<html lang="en" >
 			<head><title>froge159</title></head>
-			<body className={`w-full h-full min-h-screen text-white overflow-x-hidden`}>
+			<body className={`w-full h-full  text-white overflow-x-hidden`}>
 				<AnimatePresence>
 					{children}
 				</AnimatePresence>

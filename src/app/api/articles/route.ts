@@ -30,6 +30,5 @@ export async function GET() {
     } catch (error) {
         return NextResponse.json({ error: error }, { status: 500 });
     }
-    articles.sort((a: Article, b: Article) => new Date(b.pub_date).getTime() - new Date(a.pub_date).getTime());
     return NextResponse.json(articles);
 }

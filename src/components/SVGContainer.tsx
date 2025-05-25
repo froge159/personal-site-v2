@@ -17,7 +17,7 @@ export default function SVGContainer({link, index, color, handleInside, checkIns
             onMouseLeave={() => handleInside(index)}  
             animate={checkInside[index] ? {boxShadow: `0px 0px 60px 0px ${color}`} : {boxShadow: 'none'}} 
             transition={{duration:0.4, ease:"easeInOut"}}
-            className="rounded-full"
+            className="rounded-full bg-none"
             target="_blank">
             {children}
         </motion.a>
