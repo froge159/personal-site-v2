@@ -9,7 +9,6 @@ import { useQuery } from '@tanstack/react-query';
 
 
 
-const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
 
 interface Article {
 	title: string;
@@ -28,18 +27,11 @@ export default function Home() {
 	}
 
 	const fetchArticles = async () => {
-		const data = await fetch(`${API_URL}/blogs/fetch_all_blogs`, {
-			headers: {
-				'X-API-Key': "" + process.env.NEXT_PUBLIC_API_KEY,
-			},
-		});
+		const data = await fetch('/api/articles')
 		if (data.ok) {
-		  const response = await data.json();
-		  response.sort((a: Article, b: Article) => new Date(b.pub_date).getTime() - new Date(a.pub_date).getTime());
-		  return response;
+		  return data.json();
 		} else {
 		  console.error('Failed to fetch articles:', data.statusText);
-		  console.log("error");
 		}
 	};
 	

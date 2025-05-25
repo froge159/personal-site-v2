@@ -1,5 +1,4 @@
 import BlogPageContent from "@/components/BlogPageContent";
-import { notFound } from "next/navigation";
 
 
 interface Article {
@@ -10,37 +9,48 @@ interface Article {
     body: string;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
 export const revalidate = 3600;
 
 
 export async function generateStaticParams() {
-    const response = await fetch(`${API_URL}/blogs/fetch_all_blogs`, {
-		headers: {
-			'X-API-Key': "" + process.env.NEXT_PUBLIC_API_KEY,
-		},
-	});
-    const data = await response.json();
-    const posts: Article[] = data;
+    const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
+    const API_KEY = process.env.API_KEY;
 
-    return posts.map((post) => ({
+    const res = await fetch(`${API_URL}/api/blogs/fetch_all_blogs`, {
+        headers: {
+            'X-API-Key': API_KEY || '',
+        },
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch articles");
+    }
+
+    let articles: Article[] = [];
+    try {
+        articles = await res.json() as Article[];
+    } catch (error) {
+        throw new Error("Failed to parse articles" + error);
+    }
+
+    return articles.map((post) => ({
         slug: post.slug,
     }));
 }
 
-export default async function BlogPage({params} : {params: Promise<{slug: string}>}) {
-    const {slug} = await params;
-    const response = await fetch(`${API_URL}/blogs/fetch_blog/${slug}`, {
-        headers: {
-            'X-API-Key': "" + process.env.NEXT_PUBLIC_API_KEY,
-        },
-    });
-    const data = await response.json();
-    const article: Article = data;
-    
-    if (!article) {notFound(); }
-    
-    return (
-        <BlogPageContent article={article}/>
-    )
+export default async function BlogPage({ params }: { params: { slug: string } }) {
+    const { slug } = await params;
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_ROUTE_HANDLER_URL}/api/articles/${slug}`);
+
+    if (response.ok) {
+        const article: Article = await response.json();
+        return (
+            <BlogPageContent article={article}/>
+        )   
+    }
+
+    else {
+        console.error("Failed to fetch article:", response.statusText);
+    }
 }

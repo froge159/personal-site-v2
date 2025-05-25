@@ -31,23 +31,6 @@ async def create_blog(blog: BlogCreate, api_key: str = Depends(get_api_key)):
         conn.close()
 
 
-@router.get("/blogs/fetch_blogs/{count}", response_model = list[Blog])
-async def fetch_blogs(count: int, api_key: str = Depends(get_api_key)):
-    conn = get_connection()
-    cursor = conn.cursor(dictionary = True)
-
-    try:
-        cursor.execute("SELECT * FROM blogs ORDER BY pub_date DESC LIMIT %s", (count,))
-        result = cursor.fetchall()
-        if not result:
-            raise HTTPException(status_code = 404, detail = "Blog not found")
-        return result
-    
-    finally:
-        cursor.close()
-        conn.close()
-
-
 @router.get("/blogs/fetch_all_blogs", response_model = list[Blog])
 async def fetch_all_blogs(api_key: str = Depends(get_api_key)):
     conn = get_connection()
@@ -103,17 +86,18 @@ async def update_blog(blog_slug: str, blog: BlogCreate, api_key: str = Depends(g
         cursor.close()
         conn.close()
 
-@router.delete("/blogs/delete/{blog_id}", response_model = Blog)
-async def delete_blog(blog_id: int, api_key: str = Depends(get_api_key)):
+
+@router.delete("/blogs/delete/{blog_slug}", response_model = Blog)
+async def delete_blog(blog_slug: str, api_key: str = Depends(get_api_key)):
     conn = get_connection()
     cursor = conn.cursor(dictionary = True)
 
     try:
-        cursor.execute("SELECT * FROM blogs WHERE id = %s", (blog_id,))
+        cursor.execute("SELECT * FROM blogs WHERE id = %s", (blog_slug,))
         result = cursor.fetchone()
         if not result:
             raise HTTPException(status_code = 404, detail = "Blog not found")
-        cursor.execute("DELETE FROM blogs WHERE id = %s", (blog_id,))
+        cursor.execute("DELETE FROM blogs WHERE id = %s", (blog_slug,))
         conn.commit()
         return result
     
