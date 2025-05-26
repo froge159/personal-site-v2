@@ -3,15 +3,29 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from fastapi.security import APIKeyHeader
 import os
-import routes
+from database import connect_to_db, close_db_connection
+from contextlib import asynccontextmanager
+
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await connect_to_db()
+    import routes
+    app.include_router(routes.router)
+
+    yield
+    await close_db_connection()
+
 
 app = FastAPI(
     title = "Blog API",
     description = "simple blog API for my personal site",
     version = "0.1.0",
-    )
+    lifespan = lifespan
+)
 
-app.include_router(routes.router)
+
 
 origins = [
     "http://localhost",
@@ -33,6 +47,7 @@ app.add_middleware(
 @app.get("/")
 async def root():
     return {"message": "Welcome to the blog API"}
+
 
 
 if __name__ == "__main__":

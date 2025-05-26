@@ -37,7 +37,7 @@ export default function Home() {
 	
 	const {data, isLoading} = useQuery({queryKey: ["articles"], queryFn: fetchArticles});
 
-	if (isLoading) return <div></div>
+	if (isLoading || !data) return <div></div>
 
 	return (
 		<motion.div initial={{opacity: 0}}
