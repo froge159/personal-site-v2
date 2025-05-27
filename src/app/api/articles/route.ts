@@ -1,8 +1,5 @@
 import { NextResponse } from 'next/server';
 
-
-
-
 interface Article {
 	title: string;
 	description: string;

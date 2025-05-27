@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export async function GET(
-  request: Request,
-  { params }: { params: { slug: string } }
+export async function GET(  { params }: { params: { slug: string } }
 ) {
   const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
   const API_KEY = process.env.API_KEY;
