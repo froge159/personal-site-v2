@@ -1,16 +1,9 @@
-import {NextResponse} from 'next/server';
+import { NextResponse } from 'next/server';
 
-interface RouteParams {
-    params: {
-        slug: string;
-    };
-}
-
-
-export async function GET(request: Request, {params}: RouteParams) {
+export async function GET(request: Request, context: { params: { slug: string } }) {
     const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
     const API_KEY = process.env.API_KEY;
-    const {slug} = params;
+    const { slug } = context.params;
 
     const res = await fetch(`${API_URL}/api/blogs/fetch_blog/${slug}`, {
         headers: {
@@ -19,7 +12,7 @@ export async function GET(request: Request, {params}: RouteParams) {
     });
 
     if (!res.ok) {
-        return NextResponse.json({error: 'Failed to fetch article'}, {status: 500});
+        return NextResponse.json({ error: 'Failed to fetch article' }, { status: 500 });
     }
 
     return NextResponse.json(await res.json());
