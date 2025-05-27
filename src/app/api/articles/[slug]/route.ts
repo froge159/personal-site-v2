@@ -2,11 +2,12 @@ import { NextResponse } from 'next/server';
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  context: any
 ) {
   const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
   const API_KEY = process.env.API_KEY;
-  const { slug } = params;
+  const { slug } = context.params;
 
   const res = await fetch(`${API_URL}/api/blogs/fetch_blog/${slug}`, {
     headers: {
