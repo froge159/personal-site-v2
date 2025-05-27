@@ -17,7 +17,11 @@
     },
     {
       "src": "/api/articles/(.*)",           
-      "dest": "src/app/api/articles/$1"
+      "dest": "/src/app/api/articles/$1"
+    },
+    {
+      "src": "",
+      "dest": "/src/app"
     }
   ]
 }
