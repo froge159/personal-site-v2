@@ -21,7 +21,7 @@
     },
     {
       "src": "/api/articles/(.*)",
-      "dest": "/src//app/api/articles/[slug]/route.ts"
+      "dest": "/src/app/api/articles/[slug]/route.ts"
     },
     {
       "src": "/(.*)",

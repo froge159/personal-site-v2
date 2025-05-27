@@ -1,16 +1,11 @@
 import { NextResponse } from 'next/server';
 
-interface ArticleRouteContext {
-  params: {
-    slug: string;
-  };
-}
 
 
-export async function GET(request: Request, context: ArticleRouteContext) {
+export async function GET(request: Request, { params }: { params: { slug: string } }) {
   const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
   const API_KEY = process.env.API_KEY;
-  const slug = await context.params.slug;
+  const {slug} = params;
 
   const res = await fetch(`${API_URL}/api/blogs/fetch_blog/${slug}`, {
     headers: {
