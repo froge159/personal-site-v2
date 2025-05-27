@@ -2,11 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json", 
+      "src": "/package.json", 
       "use": "@vercel/next"
     },
     {
-      "src": "api/*.py", 
+      "src": "/api/*.py", 
       "use": "@vercel/python"
     }
   ],
@@ -16,8 +16,12 @@
       "dest": "/api/main.py" 
     },
     {
+      "src": "/api/articles",
+      "dest": "/src/app/api/articles/route.ts" 
+    },
+    {
       "src": "/api/articles/(.*)",
-      "dest": "/src/app/api/articles/$1" 
+      "dest": "/src//app/api/articles/[slug]/route.ts"
     },
     {
       "src": "/(.*)",
