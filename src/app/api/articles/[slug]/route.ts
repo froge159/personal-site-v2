@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 
 
 
-export async function GET(request: Request, {params}: {params: Promise<{ slug: string }>}) {
+export async function GET(request: NextRequest, { params }: { params: { slug: string } }) {
   const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
   const API_KEY = process.env.API_KEY;
-  const {slug} = await params;
+  const {slug} = params;
 
   const res = await fetch(`${API_URL}/api/blogs/fetch_blog/${slug}`, {
     headers: {
