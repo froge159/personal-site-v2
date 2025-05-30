@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
 
-export async function GET(request: NextRequest, context: {params: {slug: string}}) {
+export async function GET(request: NextRequest, context: { params: { slug: string } }): Promise<NextResponse> {
 //export async function GET(request: NextRequest, { params }: { params: { slug: string } }) {
 // export async function GET(request: NextRequest, {params}: {params: Promise<{ slug: string }>}) {
   const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
