@@ -16,14 +16,6 @@
       "dest": "/api/main.py" 
     },
     {
-      "src": "/api/articles",
-      "dest": "/src/app/api/articles/route.ts" 
-    },
-    {
-      "src": "/api/articles/(.*)",
-      "dest": "/src/app/api/articles/[slug]/route.ts"
-    },
-    {
       "src": "/(.*)",
       "dest": "/$1" 
     }
