@@ -87,7 +87,7 @@ async def delete_blog(blog_slug: str, api_key: str = Depends(get_api_key)):
         result = cursor.fetchone()
         if not result:
             raise HTTPException(status_code = 404, detail = "Blog not found")
-        cursor.execute("DELETE FROM blogs WHERE id = %s", (blog_slug,))
+        cursor.execute("DELETE FROM blogs WHERE slug = %s", (blog_slug,))
         write.commit()
         return result
     
