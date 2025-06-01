@@ -83,7 +83,7 @@ async def delete_blog(blog_slug: str, api_key: str = Depends(get_api_key)):
     cursor = get_write_db_cursor(dictionary=True)
 
     try:
-        cursor.execute("SELECT * FROM blogs WHERE id = %s", (blog_slug,))
+        cursor.execute("SELECT * FROM blogs WHERE slug = %s", (blog_slug,))
         result = cursor.fetchone()
         if not result:
             raise HTTPException(status_code = 404, detail = "Blog not found")

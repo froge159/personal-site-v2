@@ -1,0 +1,42 @@
+# serverless.yml
+service: fastapi-lambda
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: us-east-2
+  environment:
+    DB_HOST_READ: ${env:DB_HOST_READ}
+    DB_HOST_WRITE: ${env:DB_HOST_WRITE}
+    DB_PORT_READ: ${env:DB_PORT_READ}
+    DB_PORT_WRITE: ${env:DB_PORT_WRITE}
+    DB_USER_READ: ${env:DB_USER_READ}
+    DB_USER_WRITE: ${env:DB_USER_WRITE}
+    DB_PASSWORD_READ: ${env:DB_PASSWORD_READ}
+    DB_PASSWORD_WRITE: ${env:DB_PASSWORD_WRITE}
+    DB_NAME_READ: ${env:DB_NAME_READ}
+    DB_NAME_WRITE: ${env:DB_NAME_WRITE}
+    API_KEY: ${env:API_KEY}
+  vpc:
+    securityGroupIds:
+      - sg-04e359aed7f2c56ef
+    subnetIds:
+      - subnet-0577f1abe879d0418
+      - subnet-01d69a314d088a592
+
+functions:
+  app:
+    handler: main.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+    timeout: 30
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true

@@ -10,7 +10,6 @@ interface Article {
 }
 
 export const revalidate = 3600;
-export const dynamic = 'force-dynamic'
 
 
 export async function generateStaticParams() {
