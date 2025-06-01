@@ -10,7 +10,7 @@ interface Article {
 }
 
 export const revalidate = 3600;
-
+export const dynamic = 'force-dynamic'; 
 
 export async function generateStaticParams() {
     const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
@@ -42,7 +42,6 @@ export default async function BlogPage({ params }: { params: Promise<{ slug: str
     const { slug } =  await params;
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_ROUTE_HANDLER_URL}/api/articles/${slug}`);
-    //console.log(`${process.env.NEXT_PUBLIC_ROUTE_HANDLER_URL}/api/articles/${slug}`)
 
     if (response.ok) {
         const article: Article = await response.json();
