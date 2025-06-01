@@ -1,0 +1,6 @@
+fastapi
+mangum
+mysql-connector-python
+pydantic
+requests
+uvicorn[standard]

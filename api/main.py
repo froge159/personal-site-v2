@@ -5,7 +5,7 @@ from fastapi.security import APIKeyHeader
 import os
 from database import connect_to_db, close_db_connection
 from contextlib import asynccontextmanager
-from mangum import Mangum
+
 
 
 @asynccontextmanager
@@ -47,12 +47,6 @@ app.add_middleware(
 @app.get("/")
 async def root():
     return {"message": "Welcome to the blog API"}
-
-
-
-
-handler = Mangum(app)
-
 
 
 

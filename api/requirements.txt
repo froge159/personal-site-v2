@@ -3,4 +3,3 @@ uvicorn[standard]
 pydantic
 mysql-connector-python
 requests
-mangum
