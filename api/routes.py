@@ -7,12 +7,12 @@ import logging
 
 router = APIRouter(prefix="/api")
 
-@router.post("/blogs/create/", response_model=Blog)
+@router.post("/blogs/create", response_model=Blog)
 async def create_blog(blog: BlogCreate, api_key: str = Depends(get_api_key)):
     cursor = get_write_db_cursor(dictionary=True)
     try:
         query = "INSERT INTO blogs (title, pub_date, description, body, slug) VALUES (%s, %s, %s, %s, %s)"
-        values = (blog.title, date.today(), blog.description, blog.body, blog.slug)
+        values = (blog.title, date.today(), blog.description, blog.body, blog.slug,)
         cursor.execute(query, values)
         write.commit()
 
@@ -22,7 +22,7 @@ async def create_blog(blog: BlogCreate, api_key: str = Depends(get_api_key)):
     except Exception as e:
         logging.error(f"Error creating blog: {e}")
         write.rollback()
-        raise HTTPException(status_code=500, detail=e)    
+        raise HTTPException(status_code=500, detail="error creating blog")    
     
     finally:
         cursor.close()
@@ -79,11 +79,11 @@ async def update_blog(blog_slug: str, blog: BlogCreate, api_key: str = Depends(g
 
 
 @router.delete("/blogs/delete/{blog_slug}", response_model = Blog)
-async def delete_blog(blog_slug: str, api_key: str = Depends(get_api_key)):
+async def delete_blog(blog_slug: str, _api_key: str = Depends(get_api_key)):
     cursor = get_write_db_cursor(dictionary=True)
 
     try:
-        cursor.execute("SELECT * FROM blogs WHERE id = %s", (blog_slug,))
+        cursor.execute("SELECT * FROM blogs WHERE slug = %s", (blog_slug,))
         result = cursor.fetchone()
         if not result:
             raise HTTPException(status_code = 404, detail = "Blog not found")

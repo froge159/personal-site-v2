@@ -4,7 +4,7 @@ service: fastapi-lambda
 provider:
   name: aws
   runtime: python3.11
-  region: us-east-2
+  region: us-east-1
   environment:
     DB_HOST_READ: ${env:DB_HOST_READ}
     DB_HOST_WRITE: ${env:DB_HOST_WRITE}
@@ -19,10 +19,10 @@ provider:
     API_KEY: ${env:API_KEY}
   vpc:
     securityGroupIds:
-      - sg-04e359aed7f2c56ef
+      - sg-0b458b13639fcec0f
     subnetIds:
-      - subnet-0577f1abe879d0418
-      - subnet-01d69a314d088a592
+      - subnet-0a5a54294414de4a7
+      - subnet-09c4802426fd85c46
 
 functions:
   app:
@@ -32,7 +32,7 @@ functions:
           path: /{proxy+}
           method: ANY
           cors: true
-    timeout: 30
+    timeout: 29
 
 plugins:
   - serverless-python-requirements

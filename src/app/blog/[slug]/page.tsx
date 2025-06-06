@@ -10,8 +10,6 @@ interface Article {
 }
 
 export const revalidate = 3600;
-export const dynamic = 'force-dynamic'
-
 
 export async function generateStaticParams() {
     const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;

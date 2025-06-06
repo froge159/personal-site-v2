@@ -7,27 +7,27 @@
     "provider": {
       "name": "aws",
       "runtime": "python3.11",
-      "region": "us-east-2",
+      "region": "us-east-1",
       "environment": {
-        "DB_HOST_READ": "blog-db.cluster-ro-c3yysq602yhq.us-east-2.rds.amazonaws.com",
-        "DB_HOST_WRITE": "blog-db.cluster-c3yysq602yhq.us-east-2.rds.amazonaws.com",
+        "DB_HOST_READ": "personal-blog-db.cluster-ro-cq58giquq44j.us-east-1.rds.amazonaws.com",
+        "DB_HOST_WRITE": "personal-blog-db.cluster-cq58giquq44j.us-east-1.rds.amazonaws.com",
         "DB_PORT_READ": "3306",
         "DB_PORT_WRITE": "3306",
         "DB_USER_READ": "admin",
         "DB_USER_WRITE": "admin",
-        "DB_PASSWORD_READ": "{bFndZ8v,JFl",
-        "DB_PASSWORD_WRITE": "{bFndZ8v,JFl",
-        "DB_NAME_READ": "blog_db",
-        "DB_NAME_WRITE": "blog_db",
+        "DB_PASSWORD_READ": "HkcoIgTzPP7S87Z8Tx01",
+        "DB_PASSWORD_WRITE": "HkcoIgTzPP7S87Z8Tx01",
+        "DB_NAME_READ": "blog",
+        "DB_NAME_WRITE": "blog",
         "API_KEY": "hOoxqjKGV5EdgP8gZA8tOaimwM8v99kqDyqbzW6SGHaIY5lBpxhhJiGVADfHEgsX"
       },
       "vpc": {
         "securityGroupIds": [
-          "sg-04e359aed7f2c56ef"
+          "sg-0b458b13639fcec0f"
         ],
         "subnetIds": [
-          "subnet-0577f1abe879d0418",
-          "subnet-01d69a314d088a592"
+          "subnet-0a5a54294414de4a7",
+          "subnet-09c4802426fd85c46"
         ]
       },
       "stage": "dev",
@@ -138,26 +138,26 @@
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "S3Bucket": "serverless-framework-deployments-us-east-2-9e03d789-3d12",
-                "S3Key": "serverless/fastapi-lambda/dev/1748750827045-2025-06-01T04:07:07.045Z/fastapi-lambda.zip"
+                "S3Bucket": "serverless-framework-deployments-us-east-1-05073739-efa1",
+                "S3Key": "serverless/fastapi-lambda/dev/1749179626672-2025-06-06T03:13:46.672Z/fastapi-lambda.zip"
               },
               "Handler": "main.handler",
               "Runtime": "python3.11",
               "FunctionName": "fastapi-lambda-dev-app",
               "MemorySize": 1024,
-              "Timeout": 30,
+              "Timeout": 29,
               "Environment": {
                 "Variables": {
-                  "DB_HOST_READ": "blog-db.cluster-ro-c3yysq602yhq.us-east-2.rds.amazonaws.com",
-                  "DB_HOST_WRITE": "blog-db.cluster-c3yysq602yhq.us-east-2.rds.amazonaws.com",
+                  "DB_HOST_READ": "personal-blog-db.cluster-ro-cq58giquq44j.us-east-1.rds.amazonaws.com",
+                  "DB_HOST_WRITE": "personal-blog-db.cluster-cq58giquq44j.us-east-1.rds.amazonaws.com",
                   "DB_PORT_READ": "3306",
                   "DB_PORT_WRITE": "3306",
                   "DB_USER_READ": "admin",
                   "DB_USER_WRITE": "admin",
-                  "DB_PASSWORD_READ": "{bFndZ8v,JFl",
-                  "DB_PASSWORD_WRITE": "{bFndZ8v,JFl",
-                  "DB_NAME_READ": "blog_db",
-                  "DB_NAME_WRITE": "blog_db",
+                  "DB_PASSWORD_READ": "HkcoIgTzPP7S87Z8Tx01",
+                  "DB_PASSWORD_WRITE": "HkcoIgTzPP7S87Z8Tx01",
+                  "DB_NAME_READ": "blog",
+                  "DB_NAME_WRITE": "blog",
                   "API_KEY": "hOoxqjKGV5EdgP8gZA8tOaimwM8v99kqDyqbzW6SGHaIY5lBpxhhJiGVADfHEgsX"
                 }
               },
@@ -180,14 +180,14 @@
               "AppLogGroup"
             ]
           },
-          "AppLambdaVersionrHCssHnqqNsh7yXtgBYmlGx6vyVzQXRJcOETfMVI0": {
+          "AppLambdaVersionEacmmyVXZP8xvNaFu7CLNJ07n4WVIiyF364tq6w8Cw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "COp5YgwAjWHuWGnYpJF0BHTxJJf0zfEG1by2lvRo7Ck="
+              "CodeSha256": "laI+iwMOOZwezHUVH9goz76g60K49heYU+Gsx+hLMs0="
             }
           },
           "ApiGatewayRestApi": {
@@ -308,7 +308,7 @@
               "AppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1748750787336": {
+          "ApiGatewayDeployment1749179586463": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -361,7 +361,7 @@
         },
         "Outputs": {
           "ServerlessDeploymentBucketName": {
-            "Value": "serverless-framework-deployments-us-east-2-9e03d789-3d12",
+            "Value": "serverless-framework-deployments-us-east-1-05073739-efa1",
             "Export": {
               "Name": "sls-fastapi-lambda-dev-ServerlessDeploymentBucketName"
             }
@@ -369,7 +369,7 @@
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersionrHCssHnqqNsh7yXtgBYmlGx6vyVzQXRJcOETfMVI0"
+              "Ref": "AppLambdaVersionEacmmyVXZP8xvNaFu7CLNJ07n4WVIiyF364tq6w8Cw"
             },
             "Export": {
               "Name": "sls-fastapi-lambda-dev-AppLambdaFunctionQualifiedArn"
@@ -442,13 +442,13 @@
             }
           }
         ],
-        "timeout": 30,
+        "timeout": 29,
         "name": "fastapi-lambda-dev-app",
         "package": {},
         "memory": 1024,
         "runtime": "python3.11",
         "vpc": {},
-        "versionLogicalId": "AppLambdaVersionrHCssHnqqNsh7yXtgBYmlGx6vyVzQXRJcOETfMVI0"
+        "versionLogicalId": "AppLambdaVersionEacmmyVXZP8xvNaFu7CLNJ07n4WVIiyF364tq6w8Cw"
       }
     },
     "configValidationMode": "warn",
@@ -474,7 +474,7 @@
     "artifact": "C:\\Users\\samjh\\OneDrive\\Documents\\Coding\\Web Dev\\NextJS\\personal-site\\api\\.serverless\\fastapi-lambda.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/fastapi-lambda/dev/1748750827045-2025-06-01T04:07:07.045Z",
+    "artifactDirectoryName": "serverless/fastapi-lambda/dev/1749179626672-2025-06-06T03:13:46.672Z",
     "artifact": "fastapi-lambda.zip"
   }
 }

@@ -1,6 +1,6 @@
 {
   "C:\\Users\\samjh\\OneDrive\\Documents\\Coding\\Web Dev\\NextJS\\personal-site\\api\\serverless.yml": {
-    "versionFramework": "4.15.1",
+    "versionFramework": "4.17.0",
     "servicePath": "C:\\Users\\samjh\\OneDrive\\Documents\\Coding\\Web Dev\\NextJS\\personal-site\\api\\serverless.yml",
     "serviceConfigFileName": "serverless.yml",
     "service": {
@@ -8,27 +8,27 @@
       "provider": {
         "name": "aws",
         "runtime": "python3.11",
-        "region": "us-east-2",
+        "region": "us-east-1",
         "environment": {
-          "DB_HOST_READ": "blog-db.cluster-ro-c3yysq602yhq.us-east-2.rds.amazonaws.com",
-          "DB_HOST_WRITE": "blog-db.cluster-c3yysq602yhq.us-east-2.rds.amazonaws.com",
+          "DB_HOST_READ": "personal-blog-db.cluster-ro-cq58giquq44j.us-east-1.rds.amazonaws.com",
+          "DB_HOST_WRITE": "personal-blog-db.cluster-cq58giquq44j.us-east-1.rds.amazonaws.com",
           "DB_PORT_READ": "3306",
           "DB_PORT_WRITE": "3306",
           "DB_USER_READ": "admin",
           "DB_USER_WRITE": "admin",
           "DB_PASSWORD_READ": "<REDACTED>",
           "DB_PASSWORD_WRITE": "<REDACTED>",
-          "DB_NAME_READ": "blog_db",
-          "DB_NAME_WRITE": "blog_db",
+          "DB_NAME_READ": "blog",
+          "DB_NAME_WRITE": "blog",
           "API_KEY": "<REDACTED>"
         },
         "vpc": {
           "securityGroupIds": [
-            "sg-04e359aed7f2c56ef"
+            "sg-0b458b13639fcec0f"
           ],
           "subnetIds": [
-            "subnet-0577f1abe879d0418",
-            "subnet-01d69a314d088a592"
+            "subnet-0a5a54294414de4a7",
+            "subnet-09c4802426fd85c46"
           ]
         },
         "stage": "dev",
@@ -139,26 +139,26 @@
               "Type": "AWS::Lambda::Function",
               "Properties": {
                 "Code": {
-                  "S3Bucket": "serverless-framework-deployments-us-east-2-9e03d789-3d12",
-                  "S3Key": "serverless/fastapi-lambda/dev/1748750827045-2025-06-01T04:07:07.045Z/fastapi-lambda.zip"
+                  "S3Bucket": "serverless-framework-deployments-us-east-1-05073739-efa1",
+                  "S3Key": "serverless/fastapi-lambda/dev/1749179626672-2025-06-06T03:13:46.672Z/fastapi-lambda.zip"
                 },
                 "Handler": "main.handler",
                 "Runtime": "python3.11",
                 "FunctionName": "fastapi-lambda-dev-app",
                 "MemorySize": 1024,
-                "Timeout": 30,
+                "Timeout": 29,
                 "Environment": {
                   "Variables": {
-                    "DB_HOST_READ": "blog-db.cluster-ro-c3yysq602yhq.us-east-2.rds.amazonaws.com",
-                    "DB_HOST_WRITE": "blog-db.cluster-c3yysq602yhq.us-east-2.rds.amazonaws.com",
+                    "DB_HOST_READ": "personal-blog-db.cluster-ro-cq58giquq44j.us-east-1.rds.amazonaws.com",
+                    "DB_HOST_WRITE": "personal-blog-db.cluster-cq58giquq44j.us-east-1.rds.amazonaws.com",
                     "DB_PORT_READ": "3306",
                     "DB_PORT_WRITE": "3306",
                     "DB_USER_READ": "admin",
                     "DB_USER_WRITE": "admin",
                     "DB_PASSWORD_READ": "<REDACTED>",
                     "DB_PASSWORD_WRITE": "<REDACTED>",
-                    "DB_NAME_READ": "blog_db",
-                    "DB_NAME_WRITE": "blog_db",
+                    "DB_NAME_READ": "blog",
+                    "DB_NAME_WRITE": "blog",
                     "API_KEY": "<REDACTED>"
                   }
                 },
@@ -170,11 +170,11 @@
                 },
                 "VpcConfig": {
                   "SecurityGroupIds": [
-                    "sg-04e359aed7f2c56ef"
+                    "sg-0b458b13639fcec0f"
                   ],
                   "SubnetIds": [
-                    "subnet-0577f1abe879d0418",
-                    "subnet-01d69a314d088a592"
+                    "subnet-0a5a54294414de4a7",
+                    "subnet-09c4802426fd85c46"
                   ]
                 }
               },
@@ -182,14 +182,14 @@
                 "AppLogGroup"
               ]
             },
-            "AppLambdaVersionrHCssHnqqNsh7yXtgBYmlGx6vyVzQXRJcOETfMVI0": {
+            "AppLambdaVersionEacmmyVXZP8xvNaFu7CLNJ07n4WVIiyF364tq6w8Cw": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "AppLambdaFunction"
                 },
-                "CodeSha256": "COp5YgwAjWHuWGnYpJF0BHTxJJf0zfEG1by2lvRo7Ck="
+                "CodeSha256": "laI+iwMOOZwezHUVH9goz76g60K49heYU+Gsx+hLMs0="
               }
             },
             "ApiGatewayRestApi": {
@@ -310,7 +310,7 @@
                 "AppLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1748750787336": {
+            "ApiGatewayDeployment1749179586463": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -363,7 +363,7 @@
           },
           "Outputs": {
             "ServerlessDeploymentBucketName": {
-              "Value": "serverless-framework-deployments-us-east-2-9e03d789-3d12",
+              "Value": "serverless-framework-deployments-us-east-1-05073739-efa1",
               "Export": {
                 "Name": "sls-fastapi-lambda-dev-ServerlessDeploymentBucketName"
               }
@@ -371,7 +371,7 @@
             "AppLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "AppLambdaVersionrHCssHnqqNsh7yXtgBYmlGx6vyVzQXRJcOETfMVI0"
+                "Ref": "AppLambdaVersionEacmmyVXZP8xvNaFu7CLNJ07n4WVIiyF364tq6w8Cw"
               },
               "Export": {
                 "Name": "sls-fastapi-lambda-dev-AppLambdaFunctionQualifiedArn"
@@ -435,13 +435,13 @@
               }
             }
           ],
-          "timeout": 30,
+          "timeout": 29,
           "name": "fastapi-lambda-dev-app",
           "package": {},
           "memory": 1024,
           "runtime": "python3.11",
           "vpc": {},
-          "versionLogicalId": "AppLambdaVersionrHCssHnqqNsh7yXtgBYmlGx6vyVzQXRJcOETfMVI0"
+          "versionLogicalId": "AppLambdaVersionEacmmyVXZP8xvNaFu7CLNJ07n4WVIiyF364tq6w8Cw"
         }
       },
       "plugins": [
@@ -456,27 +456,27 @@
     "provider": {
       "name": "aws",
       "runtime": "python3.11",
-      "region": "us-east-2",
+      "region": "us-east-1",
       "environment": {
-        "DB_HOST_READ": "blog-db.cluster-ro-c3yysq602yhq.us-east-2.rds.amazonaws.com",
-        "DB_HOST_WRITE": "blog-db.cluster-c3yysq602yhq.us-east-2.rds.amazonaws.com",
+        "DB_HOST_READ": "personal-blog-db.cluster-ro-cq58giquq44j.us-east-1.rds.amazonaws.com",
+        "DB_HOST_WRITE": "personal-blog-db.cluster-cq58giquq44j.us-east-1.rds.amazonaws.com",
         "DB_PORT_READ": "3306",
         "DB_PORT_WRITE": "3306",
         "DB_USER_READ": "admin",
         "DB_USER_WRITE": "admin",
         "DB_PASSWORD_READ": "<REDACTED>",
         "DB_PASSWORD_WRITE": "<REDACTED>",
-        "DB_NAME_READ": "blog_db",
-        "DB_NAME_WRITE": "blog_db",
+        "DB_NAME_READ": "blog",
+        "DB_NAME_WRITE": "blog",
         "API_KEY": "<REDACTED>"
       },
       "vpc": {
         "securityGroupIds": [
-          "sg-04e359aed7f2c56ef"
+          "sg-0b458b13639fcec0f"
         ],
         "subnetIds": [
-          "subnet-0577f1abe879d0418",
-          "subnet-01d69a314d088a592"
+          "subnet-0a5a54294414de4a7",
+          "subnet-09c4802426fd85c46"
         ]
       },
       "stage": "dev",
@@ -587,26 +587,26 @@
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "S3Bucket": "serverless-framework-deployments-us-east-2-9e03d789-3d12",
-                "S3Key": "serverless/fastapi-lambda/dev/1748750827045-2025-06-01T04:07:07.045Z/fastapi-lambda.zip"
+                "S3Bucket": "serverless-framework-deployments-us-east-1-05073739-efa1",
+                "S3Key": "serverless/fastapi-lambda/dev/1749179626672-2025-06-06T03:13:46.672Z/fastapi-lambda.zip"
               },
               "Handler": "main.handler",
               "Runtime": "python3.11",
               "FunctionName": "fastapi-lambda-dev-app",
               "MemorySize": 1024,
-              "Timeout": 30,
+              "Timeout": 29,
               "Environment": {
                 "Variables": {
-                  "DB_HOST_READ": "blog-db.cluster-ro-c3yysq602yhq.us-east-2.rds.amazonaws.com",
-                  "DB_HOST_WRITE": "blog-db.cluster-c3yysq602yhq.us-east-2.rds.amazonaws.com",
+                  "DB_HOST_READ": "personal-blog-db.cluster-ro-cq58giquq44j.us-east-1.rds.amazonaws.com",
+                  "DB_HOST_WRITE": "personal-blog-db.cluster-cq58giquq44j.us-east-1.rds.amazonaws.com",
                   "DB_PORT_READ": "3306",
                   "DB_PORT_WRITE": "3306",
                   "DB_USER_READ": "admin",
                   "DB_USER_WRITE": "admin",
                   "DB_PASSWORD_READ": "<REDACTED>",
                   "DB_PASSWORD_WRITE": "<REDACTED>",
-                  "DB_NAME_READ": "blog_db",
-                  "DB_NAME_WRITE": "blog_db",
+                  "DB_NAME_READ": "blog",
+                  "DB_NAME_WRITE": "blog",
                   "API_KEY": "<REDACTED>"
                 }
               },
@@ -618,11 +618,11 @@
               },
               "VpcConfig": {
                 "SecurityGroupIds": [
-                  "sg-04e359aed7f2c56ef"
+                  "sg-0b458b13639fcec0f"
                 ],
                 "SubnetIds": [
-                  "subnet-0577f1abe879d0418",
-                  "subnet-01d69a314d088a592"
+                  "subnet-0a5a54294414de4a7",
+                  "subnet-09c4802426fd85c46"
                 ]
               }
             },
@@ -630,14 +630,14 @@
               "AppLogGroup"
             ]
           },
-          "AppLambdaVersionrHCssHnqqNsh7yXtgBYmlGx6vyVzQXRJcOETfMVI0": {
+          "AppLambdaVersionEacmmyVXZP8xvNaFu7CLNJ07n4WVIiyF364tq6w8Cw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "COp5YgwAjWHuWGnYpJF0BHTxJJf0zfEG1by2lvRo7Ck="
+              "CodeSha256": "laI+iwMOOZwezHUVH9goz76g60K49heYU+Gsx+hLMs0="
             }
           },
           "ApiGatewayRestApi": {
@@ -758,7 +758,7 @@
               "AppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1748750787336": {
+          "ApiGatewayDeployment1749179586463": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -811,7 +811,7 @@
         },
         "Outputs": {
           "ServerlessDeploymentBucketName": {
-            "Value": "serverless-framework-deployments-us-east-2-9e03d789-3d12",
+            "Value": "serverless-framework-deployments-us-east-1-05073739-efa1",
             "Export": {
               "Name": "sls-fastapi-lambda-dev-ServerlessDeploymentBucketName"
             }
@@ -819,7 +819,7 @@
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersionrHCssHnqqNsh7yXtgBYmlGx6vyVzQXRJcOETfMVI0"
+              "Ref": "AppLambdaVersionEacmmyVXZP8xvNaFu7CLNJ07n4WVIiyF364tq6w8Cw"
             },
             "Export": {
               "Name": "sls-fastapi-lambda-dev-AppLambdaFunctionQualifiedArn"
@@ -863,7 +863,7 @@
       "serviceProvider": null,
       "instanceParameters": null
     },
-    "serviceRawFile": "# serverless.yml\r\nservice: fastapi-lambda\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: python3.11\r\n  region: us-east-2\r\n  environment:\r\n    DB_HOST_READ: ${env:DB_HOST_READ}\r\n    DB_HOST_WRITE: ${env:DB_HOST_WRITE}\r\n    DB_PORT_READ: ${env:DB_PORT_READ}\r\n    DB_PORT_WRITE: ${env:DB_PORT_WRITE}\r\n    DB_USER_READ: ${env:DB_USER_READ}\r\n    DB_USER_WRITE: ${env:DB_USER_WRITE}\r\n    DB_PASSWORD_READ: ${env:DB_PASSWORD_READ}\r\n    DB_PASSWORD_WRITE: ${env:DB_PASSWORD_WRITE}\r\n    DB_NAME_READ: ${env:DB_NAME_READ}\r\n    DB_NAME_WRITE: ${env:DB_NAME_WRITE}\r\n    API_KEY: ${env:API_KEY}\r\n  vpc:\r\n    securityGroupIds:\r\n      - sg-04e359aed7f2c56ef\r\n    subnetIds:\r\n      - subnet-0577f1abe879d0418\r\n      - subnet-01d69a314d088a592\r\n\r\nfunctions:\r\n  app:\r\n    handler: main.handler\r\n    events:\r\n      - http:\r\n          path: /{proxy+}\r\n          method: ANY\r\n          cors: true\r\n    timeout: 30\r\n\r\nplugins:\r\n  - serverless-python-requirements\r\n\r\ncustom:\r\n  pythonRequirements:\r\n    dockerizePip: true\r\n",
+    "serviceRawFile": "# serverless.yml\r\nservice: fastapi-lambda\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: python3.11\r\n  region: us-east-1\r\n  environment:\r\n    DB_HOST_READ: ${env:DB_HOST_READ}\r\n    DB_HOST_WRITE: ${env:DB_HOST_WRITE}\r\n    DB_PORT_READ: ${env:DB_PORT_READ}\r\n    DB_PORT_WRITE: ${env:DB_PORT_WRITE}\r\n    DB_USER_READ: ${env:DB_USER_READ}\r\n    DB_USER_WRITE: ${env:DB_USER_WRITE}\r\n    DB_PASSWORD_READ: ${env:DB_PASSWORD_READ}\r\n    DB_PASSWORD_WRITE: ${env:DB_PASSWORD_WRITE}\r\n    DB_NAME_READ: ${env:DB_NAME_READ}\r\n    DB_NAME_WRITE: ${env:DB_NAME_WRITE}\r\n    API_KEY: ${env:API_KEY}\r\n  vpc:\r\n    securityGroupIds:\r\n      - sg-0b458b13639fcec0f\r\n    subnetIds:\r\n      - subnet-0a5a54294414de4a7\r\n      - subnet-09c4802426fd85c46\r\n\r\nfunctions:\r\n  app:\r\n    handler: main.handler\r\n    events:\r\n      - http:\r\n          path: /{proxy+}\r\n          method: ANY\r\n          cors: true\r\n    timeout: 29\r\n\r\nplugins:\r\n  - serverless-python-requirements\r\n\r\ncustom:\r\n  pythonRequirements:\r\n    dockerizePip: true\r\n",
     "command": [
       "deploy"
     ],
@@ -874,26 +874,26 @@
     "userName": "samuelxie",
     "serviceProviderAwsAccountId": "396608771954",
     "serviceProviderAwsCfStackName": "fastapi-lambda-dev",
-    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-2:396608771954:stack/fastapi-lambda-dev/5e6d03d0-3e94-11f0-a2a9-0244e947d2a1",
-    "serviceProviderAwsCfStackCreated": "2025-06-01T02:59:01.007Z",
-    "serviceProviderAwsCfStackUpdated": "2025-06-01T03:26:37.451Z",
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:396608771954:stack/fastapi-lambda-dev/a1eb8f50-41b9-11f0-b372-0efff1173fbf",
+    "serviceProviderAwsCfStackCreated": "2025-06-05T03:03:19.109Z",
+    "serviceProviderAwsCfStackUpdated": "2025-06-06T02:18:19.606Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "AppLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-2:396608771954:function:fastapi-lambda-dev-app:3",
+        "OutputValue": "arn:aws:lambda:us-east-1:396608771954:function:fastapi-lambda-dev-app:5",
         "Description": "Current Lambda function version",
         "ExportName": "sls-fastapi-lambda-dev-AppLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "ServiceEndpoint",
-        "OutputValue": "https://42706ole0h.execute-api.us-east-2.amazonaws.com/dev",
+        "OutputValue": "https://zycbexpitl.execute-api.us-east-1.amazonaws.com/dev",
         "Description": "URL of the service endpoint",
         "ExportName": "sls-fastapi-lambda-dev-ServiceEndpoint"
       },
       {
         "OutputKey": "ServerlessDeploymentBucketName",
-        "OutputValue": "serverless-framework-deployments-us-east-2-9e03d789-3d12",
+        "OutputValue": "serverless-framework-deployments-us-east-1-05073739-efa1",
         "ExportName": "sls-fastapi-lambda-dev-ServerlessDeploymentBucketName"
       }
     ],
@@ -1003,26 +1003,26 @@
           "Type": "AWS::Lambda::Function",
           "Properties": {
             "Code": {
-              "S3Bucket": "serverless-framework-deployments-us-east-2-9e03d789-3d12",
-              "S3Key": "serverless/fastapi-lambda/dev/1748750827045-2025-06-01T04:07:07.045Z/fastapi-lambda.zip"
+              "S3Bucket": "serverless-framework-deployments-us-east-1-05073739-efa1",
+              "S3Key": "serverless/fastapi-lambda/dev/1749179626672-2025-06-06T03:13:46.672Z/fastapi-lambda.zip"
             },
             "Handler": "main.handler",
             "Runtime": "python3.11",
             "FunctionName": "fastapi-lambda-dev-app",
             "MemorySize": 1024,
-            "Timeout": 30,
+            "Timeout": 29,
             "Environment": {
               "Variables": {
-                "DB_HOST_READ": "blog-db.cluster-ro-c3yysq602yhq.us-east-2.rds.amazonaws.com",
-                "DB_HOST_WRITE": "blog-db.cluster-c3yysq602yhq.us-east-2.rds.amazonaws.com",
+                "DB_HOST_READ": "personal-blog-db.cluster-ro-cq58giquq44j.us-east-1.rds.amazonaws.com",
+                "DB_HOST_WRITE": "personal-blog-db.cluster-cq58giquq44j.us-east-1.rds.amazonaws.com",
                 "DB_PORT_READ": "3306",
                 "DB_PORT_WRITE": "3306",
                 "DB_USER_READ": "admin",
                 "DB_USER_WRITE": "admin",
                 "DB_PASSWORD_READ": "<REDACTED>",
                 "DB_PASSWORD_WRITE": "<REDACTED>",
-                "DB_NAME_READ": "blog_db",
-                "DB_NAME_WRITE": "blog_db",
+                "DB_NAME_READ": "blog",
+                "DB_NAME_WRITE": "blog",
                 "API_KEY": "<REDACTED>"
               }
             },
@@ -1034,11 +1034,11 @@
             },
             "VpcConfig": {
               "SecurityGroupIds": [
-                "sg-04e359aed7f2c56ef"
+                "sg-0b458b13639fcec0f"
               ],
               "SubnetIds": [
-                "subnet-0577f1abe879d0418",
-                "subnet-01d69a314d088a592"
+                "subnet-0a5a54294414de4a7",
+                "subnet-09c4802426fd85c46"
               ]
             }
           },
@@ -1046,14 +1046,14 @@
             "AppLogGroup"
           ]
         },
-        "AppLambdaVersionrHCssHnqqNsh7yXtgBYmlGx6vyVzQXRJcOETfMVI0": {
+        "AppLambdaVersionEacmmyVXZP8xvNaFu7CLNJ07n4WVIiyF364tq6w8Cw": {
           "Type": "AWS::Lambda::Version",
           "DeletionPolicy": "Retain",
           "Properties": {
             "FunctionName": {
               "Ref": "AppLambdaFunction"
             },
-            "CodeSha256": "COp5YgwAjWHuWGnYpJF0BHTxJJf0zfEG1by2lvRo7Ck="
+            "CodeSha256": "laI+iwMOOZwezHUVH9goz76g60K49heYU+Gsx+hLMs0="
           }
         },
         "ApiGatewayRestApi": {
@@ -1174,7 +1174,7 @@
             "AppLambdaPermissionApiGateway"
           ]
         },
-        "ApiGatewayDeployment1748750787336": {
+        "ApiGatewayDeployment1749179586463": {
           "Type": "AWS::ApiGateway::Deployment",
           "Properties": {
             "RestApiId": {
@@ -1227,7 +1227,7 @@
       },
       "Outputs": {
         "ServerlessDeploymentBucketName": {
-          "Value": "serverless-framework-deployments-us-east-2-9e03d789-3d12",
+          "Value": "serverless-framework-deployments-us-east-1-05073739-efa1",
           "Export": {
             "Name": "sls-fastapi-lambda-dev-ServerlessDeploymentBucketName"
           }
@@ -1235,7 +1235,7 @@
         "AppLambdaFunctionQualifiedArn": {
           "Description": "Current Lambda function version",
           "Value": {
-            "Ref": "AppLambdaVersionrHCssHnqqNsh7yXtgBYmlGx6vyVzQXRJcOETfMVI0"
+            "Ref": "AppLambdaVersionEacmmyVXZP8xvNaFu7CLNJ07n4WVIiyF364tq6w8Cw"
           },
           "Export": {
             "Name": "sls-fastapi-lambda-dev-AppLambdaFunctionQualifiedArn"
