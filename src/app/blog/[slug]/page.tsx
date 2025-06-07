@@ -9,7 +9,6 @@ interface Article {
     body: string;
 }
 
-export const revalidate = 3600;
 
 export async function generateStaticParams() {
     const API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL;
