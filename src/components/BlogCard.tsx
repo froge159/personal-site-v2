@@ -11,7 +11,7 @@ interface BlogCard {
 export default function BlogCard({title, desc, date, slug}: BlogCard) {
     return (
             <li>
-                <Link href={`/blog/${slug}`}>
+                <Link href={`/blog/${slug}`} prefetch={true}>
                     <h3 className={`${satoshiRegular.variable} font-regular mb-2`}>{title}</h3>
                     <p className={`${satoshiLight.variable} font-light text-[0.9rem]`}>{`${desc} | ${date}`}</p>
                 </Link>

@@ -22,7 +22,7 @@ export default function Navbar({ text }: { text: string; }) {
                 <h3 className={`${satoshiBold.variable} font-bold ml-5 pt-5`}>froge</h3>
             </div>
             <div className="flex flex-col">
-                <Link href= {text === "blog" ? `/${text}` : '/'} className={`${satoshiRegular.variable} font-normal pt-5`} onMouseEnter = {() => setHover(true)} onMouseLeave = {() => setHover(false)}>{text}</Link>
+                <Link href= {text === "blog" ? `/${text}` : '/'} prefetch={true} className={`${satoshiRegular.variable} font-normal pt-5`} onMouseEnter = {() => setHover(true)} onMouseLeave = {() => setHover(false)}>{text}</Link>
                 <motion.div
                     style={{
                         marginTop: "-3px",

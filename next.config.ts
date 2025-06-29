@@ -1,12 +1,11 @@
-import withBundleAnalyzer from '@next/bundle-analyzer';
 
 
-const nextConfig = {}
+const nextConfig = {
+  experimental: {
+    appDir: true,
+  }
+};
  
 
-const withBundleAnalyzerConfigured = withBundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true',});
+ export default nextConfig;
 
-
-export default withBundleAnalyzerConfigured(nextConfig);
- 

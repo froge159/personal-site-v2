@@ -27,7 +27,7 @@ export default function BlogPageContent({article} : {article: Article}){
 		transition={{duration: 0.3}}>
             <div className="flex w-[180px] justify-between relative top-[60px] ml-auto mr-[144px]">
                 <div>
-                    <Link href="/" onMouseEnter={() => onInside(0)} onMouseLeave={() => onInside(0)}>home</Link>
+                    <Link href="/" prefetch={true} onMouseEnter={() => onInside(0)} onMouseLeave={() => onInside(0)}>home</Link>
                     <motion.div
                         style={{
                             marginTop: "-3px",
@@ -45,7 +45,7 @@ export default function BlogPageContent({article} : {article: Article}){
                     />
                 </div>
                 <div>
-                    <Link href="/blog" onMouseEnter={() => onInside(1)} onMouseLeave={() => onInside(1)}>blog</Link>
+                    <Link href="/blog" prefetch={true} onMouseEnter={() => onInside(1)} onMouseLeave={() => onInside(1)}>blog</Link>
                     <motion.div
                         style={{
                             marginTop: "-3px",
