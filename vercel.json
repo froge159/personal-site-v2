@@ -1,13 +1,13 @@
 {
   "version": 2,
+  "framework": "nextjs",
+  "builds": [
+    { "src": "api/*.py", "use": "@vercel/python" }
+  ],
   "routes": [
     {
       "src": "/api/blogs/(.*)",
       "dest": "api/main.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
     }
   ]
 }
