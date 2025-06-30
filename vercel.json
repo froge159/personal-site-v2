@@ -2,7 +2,14 @@
   "version": 2,
   "framework": "nextjs",
   "builds": [
-    { "src": "api/*.py", "use": "@vercel/python" }
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    },
+    {
+      "src": "api/*.py",
+      "use": "@vercel/python"
+    }
   ],
   "routes": [
     {
@@ -13,7 +20,5 @@
       "src": "/(.*)",
       "dest": "/$1"
     }
-  ],
-  "buildCommand": "cd src && npm run build",
-  "outputDirectory": "src/.next"
+  ]
 }
