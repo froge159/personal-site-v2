@@ -18,7 +18,7 @@ const MemoizedBlogCard = memo(BlogCard);
 
 export default function Blog() {
     const fetchArticles = async () => {
-		const data = await fetch("/api/python")
+		const data = await fetch("/api/articles")
 		if (data.ok) {
 		  return data.json()
 		} else {

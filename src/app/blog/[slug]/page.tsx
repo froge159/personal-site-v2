@@ -39,7 +39,7 @@ export async function generateStaticParams() {
 export default async function BlogPage({ params }: { params: Promise<{ slug: string }>; }) {
     const { slug } =  await params;
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_ROUTE_HANDLER_URL}/api/python/${slug}`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_ROUTE_HANDLER_URL}/api/articles/${slug}`);
 
     if (response.ok) {
         const article: Article = await response.json();

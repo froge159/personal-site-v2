@@ -27,7 +27,7 @@ export default function Home() {
 	}
 
 	const fetchArticles = async () => {
-		const data = await fetch('/api/python')
+		const data = await fetch('/api/articles')
 		if (data.ok) {
 		  return data.json();
 		} else {
