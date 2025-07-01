@@ -74,6 +74,11 @@ async def update_blog(blog_slug: str, blog: BlogCreate, api_key: str = Depends(g
             raise HTTPException(status_code=404, detail="Blog not found")
         return result
 
+    except Exception as e:
+        logging.error(f"Error updating blog '{blog_slug}': {e}", exc_info=True)
+        write.rollback()
+        raise HTTPException(status_code=500, detail="error updating blog")
+
     finally:
         cursor.close()
 
